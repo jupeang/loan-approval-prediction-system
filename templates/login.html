@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Basic Reset */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+/* Slideshow background */
+.slideshow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* behind content */
+    background-size: cover;
+    background-position: center;
+    animation: slideShow 30s infinite;
+}
+
+/* Keyframes for 6-image slideshow */
+@keyframes slideShow {
+    0%   { background-image: url('{{ url_for("static", filename="images/img1.jpeg") }}'); }
+    16.6% { background-image: url('{{ url_for("static", filename="images/img2.jpeg") }}'); }
+    33.2% { background-image: url('{{ url_for("static", filename="images/img3.jpeg") }}'); }
+    49.8% { background-image: url('{{ url_for("static", filename="images/img4.jpeg") }}'); }
+    66.4% { background-image: url('{{ url_for("static", filename="images/img5.jpeg") }}'); }
+    83%   { background-image: url('{{ url_for("static", filename="images/img6.jpeg") }}'); }
+    100%  { background-image: url('{{ url_for("static", filename="images/img1.jpeg") }}'); }
+}
+
+/* Header styling */
+header {
+    background: rgba(0, 123, 255, 0.85); /* semi-transparent */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Login container */
+.container {
+    max-width: 400px;
+    margin: 60px auto;
+    background: rgba(255, 255, 255, 0.95); /* semi-transparent for readability */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 120px;
+}
+
+/* Form elements */
+label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Links */
+a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<!-- Slideshow Background -->
+<div class="slideshow"></div>
+
+<!-- Page Content -->
+<header>Login</header>
+<div class="container">
+    <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo">
+    <form action="/login" method="post">
+        <label for="email">Email</label>
+        <input type="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    <a href="/register">Don't have an account? Register</a>
+</div>
+
+</body>
+</html>
